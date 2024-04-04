@@ -2,6 +2,9 @@
 
 - Crete React app
 - Configure TailwindCSS
+- Header
+- Login form
+- Sign up form
 
 # Features
 
