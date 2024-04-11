@@ -7,6 +7,10 @@
 - Login form
 - Sign up form
 - Form Validation
+- Signup User
+- Implement Sign in User Api
+- Redux store
+- Authentication using firebase
 
 # Features
 
