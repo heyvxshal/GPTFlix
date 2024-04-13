@@ -5,7 +5,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+
 import { updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
@@ -20,13 +20,12 @@ const Login = () => {
   const password = useRef(null);
   const name = useRef(null);
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const toggleSignInForm = () => {
     setisSignInForm(!isSignInForm);
   };
-  console.log(name);
+
   const handleButtonClick = () => {
     // Validation
     const message = checkValidData(email.current.value, password.current.value);
@@ -59,7 +58,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -78,7 +76,6 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -106,6 +103,7 @@ const Login = () => {
         <h1 className="text-4xl font-semibold py-6">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
+
         {!isSignInForm && (
           <input
             ref={name}
@@ -129,12 +127,14 @@ const Login = () => {
           className="p-4 my-4 w-full bg-transparent border border-neutral-500 rounded-md"
         />
         <p className="text-red-700 text-lg">{errorMessage}</p>
+
         <button
           className="py-3 my-6 bg-red-700 w-full rounded-md"
           onClick={handleButtonClick}
         >
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
+
         <p className="my-1 cursor-pointer" onClick={toggleSignInForm}>
           {isSignInForm
             ? "New to Netflix? Sign Up Now"

@@ -11,6 +11,7 @@
 - Implement Sign in User Api
 - Redux store
 - Authentication using firebase
+- BugFix: Redirect user to browse page if logged in or login page
 
 # Features
 
