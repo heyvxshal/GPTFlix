@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
+import { LOGO } from "../utils/constants";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is Signed in
         const { uid, email, displayName, photoURL } = user;
@@ -44,16 +45,14 @@ const Header = () => {
         navigate("/login");
       }
     });
+
+    // Unsubscribe when component unmounts
+    return () => unsubscribe();
   }, []);
 
   return (
     <div className="absolute w-screen flex justify-between align-middle px-8 py-2 bg-gradient-to-b from-black z-10">
-      <img
-        className="w-44"
-        src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png
-    "
-        alt="logo"
-      />
+      <img className="w-44" src={LOGO} alt="logo" />
       {user && (
         <div className="flex items-center">
           <img
