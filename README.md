@@ -13,6 +13,8 @@
 - Authentication using firebase
 - BugFix: Redirect user to browse page if logged in or login page
 - Movies: data from TMDB
+- Gpt Search UI
+- (BONUS) Multilingual Gpt Search page
 
 # Features
 

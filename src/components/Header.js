@@ -2,10 +2,11 @@ import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
-import { LOGO } from "../utils/constants";
+import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
+import { toggleSearchView } from "../utils/gptSlice";
+import { changeLanguage } from "../utils/configSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -13,6 +14,8 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.user);
+
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
   const handleSignout = () => {
     signOut(auth)
@@ -50,13 +53,40 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
 
+  const handleGPTSearchClick = () => {
+    dispatch(toggleSearchView());
+  };
+
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
+
   return (
     <div className="absolute w-screen flex justify-between align-middle px-8 py-2 bg-gradient-to-b from-black z-10">
       <img className="w-44" src={LOGO} alt="logo" />
       {user && (
-        <div className="flex items-center">
+        <div className="flex items-center gap-3">
+          {showGptSearch && (
+            <select
+              className="p-2 rounded-md text-md font-bold  bg-neutral-950 text-neutral-200 border-2 border-stone-800"
+              onChange={handleLanguageChange}
+            >
+              {SUPPORTED_LANGUAGES.map((lng) => (
+                <option key={lng.identifier} value={lng.identifier}>
+                  {lng.name}
+                </option>
+              ))}
+            </select>
+          )}
+
+          <button
+            className="p-2 bg-neutral-950 text-neutral-200 rounded-md font-bold border-2 border-stone-800"
+            onClick={handleGPTSearchClick}
+          >
+            {showGptSearch ? "Home" : "Suggestions"}
+          </button>
           <img
-            className="w-12 h-12 rounded-md p-1"
+            className="w-11 h-11 rounded-md"
             alt="usericon"
             src={user?.photoURL}
           />
