@@ -11,12 +11,14 @@ export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiOTFkNzk4NGI0OGNhZDY3MDY2MDZiNmRkYWE0ZjU0MSIsInN1YiI6IjY2MWI1ZjAxOTJlNTViMDE2MzgxMGM1OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6NWgQ0dVBopfDBHDTdhz4yOyEdTIZYimspQ8Bn2uTUE",
+    Authorization: "Bearer " + process.env.REACT_APP_TMDB_KEY,
   },
 };
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";
+
+export const BG_URL =
+  "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2944&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 export const SUPPORTED_LANGUAGES = [
   { identifier: "en", name: "English" },
@@ -24,3 +26,5 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "hi", name: "Hindi" },
   { identifier: "fr", name: "French" },
 ];
+
+export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;

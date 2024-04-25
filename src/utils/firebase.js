@@ -8,13 +8,13 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBEsL0VIo3UXT5bazUujLJRwvjEjukiUCE",
-  authDomain: "gptflix-41a40.firebaseapp.com",
-  projectId: "gptflix-41a40",
-  storageBucket: "gptflix-41a40.appspot.com",
-  messagingSenderId: "433182377996",
-  appId: "1:433182377996:web:8c7d2096c1bf6e049b8629",
-  measurementId: "G-MP948HQ16X",
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: "",
+  measurementId: "",
 };
 
 // Initialize Firebase

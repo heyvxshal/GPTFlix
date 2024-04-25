@@ -15,6 +15,9 @@
 - Movies: data from TMDB
 - Gpt Search UI
 - (BONUS) Multilingual Gpt Search page
+- Open AI Integration
+- Reused components
+- Memoization
 
 # Features
 
